@@ -1,2 +1,2 @@
-# cartrigger.github.io
+# discord link
 a test website
