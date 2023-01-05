@@ -1,13 +1,42 @@
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r118/three.min.js"></script>
+</head>
+
 <body>
-<div>
-  <h1><p><em><strong>QuestCraft Discord</strong></em></p></h1>
-  <a href="https://www.discord.gg/questcraft">Discord</a>
-</div>
-<div>
-  <br>
-  <br>
-  <br>
-  <br>
-  <p>Test</p>
-</div>
-</body>
+    <canvas id="github"></canvas>
+
+    <script>
+        const canvas = document.querySelector("#github");
+
+        canvas.width = 1280;
+        canvas.height = 720;
+
+        const scene = new THREE.Scene();
+
+        const camera = new THREE.PerspectiveCamera(75, canvas.width / canvas.height, 0.1, 1000);
+        camera.position.z = 500;
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas });
+        renderer.setSize(canvas.width, canvas.height);
+        renderer.setClearColor(0xffffff);
+        const texture = new THREE.TextureLoader().load("https://pbs.twimg.com/profile_images/1496930542931095561/thtOzL2w_400x400.jpg");
+        const githubLogoGeometry = new THREE.PlaneGeometry(200, 200);
+        const githubLogoMaterial = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide });
+        const githubLogo = new THREE.Mesh(githubLogoGeometry, githubLogoMaterial);
+        scene.add(githubLogo);
+        let angle = 0;
+        function update() {
+            githubLogo.rotation.x = Math.sin(angle);
+            githubLogo.rotation.y = Math.cos(angle);
+            angle += 0.01;
+            renderer.render(scene, camera);
+            requestAnimationFrame(update);
+        }
+        update();
+        canvas.addEventListener("click", () => {
+            window.location.href = "https://discord.gg/questcraft";
+        });
+    </script>
+    </body>
+    </html>
