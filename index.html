@@ -13,10 +13,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r118/three.min.js"></script>
   </head>
 <body>
-    <canvas id="questraft"></canvas>
+    <canvas id="github"></canvas>
 
     <script>
-        const canvas = document.querySelector("#questcraft");
+        const canvas = document.querySelector("#github");
 
         canvas.width = 1280;
         canvas.height = 720;
@@ -29,14 +29,14 @@
         renderer.setSize(canvas.width, canvas.height);
         renderer.setClearColor(0xffffff);
         const texture = new THREE.TextureLoader().load("https://pbs.twimg.com/profile_images/1496930542931095561/thtOzL2w_400x400.jpg");
-        const questcraftLogoGeometry = new THREE.PlaneGeometry(200, 200);
-        const questcraftLogoMaterial = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide });
-        const questcraftLogo = new THREE.Mesh(githubLogoGeometry, githubLogoMaterial);
-        scene.add(questcraftLogo);
+        const githubLogoGeometry = new THREE.PlaneGeometry(200, 200);
+        const githubLogoMaterial = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide });
+        const githubLogo = new THREE.Mesh(githubLogoGeometry, githubLogoMaterial);
+        scene.add(githubLogo);
         let angle = 0;
         function update() {
-            questcraftLogo.rotation.x = Math.sin(angle);
-            questcraftLogo.rotation.y = Math.cos(angle);
+            githubLogo.rotation.x = Math.sin(angle);
+            githubLogo.rotation.y = Math.cos(angle);
             angle += 0.01;
             renderer.render(scene, camera);
             requestAnimationFrame(update);
